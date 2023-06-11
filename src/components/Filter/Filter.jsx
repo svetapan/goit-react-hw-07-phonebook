@@ -1,16 +1,19 @@
 import React from 'react';
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setStatusFilter } from '../../store/filterSlice';
+import { setFilter } from '../../store/filterSlice';
+import { getFilter } from 'store/selectors';
 
 const Filter = () => {
   const dispatch = useDispatch();
 
-  const value = useSelector(state => state.filter);
+  // const value = useSelector(state => state.contacts);
+  const value = useSelector(getFilter);
+  // const filter = useSelector(getFilters)
 
   const handleInputChange = (event) => {
-    const newFilterValue = event.target.value;
-    dispatch(setStatusFilter(newFilterValue));
+    const newFilterValue = event.currentTarget.value;
+    dispatch(setFilter(newFilterValue));
   };
 
   return (
