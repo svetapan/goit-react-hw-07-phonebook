@@ -7,9 +7,7 @@ import { getFilter } from 'store/selectors';
 const Filter = () => {
   const dispatch = useDispatch();
 
-  // const value = useSelector(state => state.contacts);
   const value = useSelector(getFilter);
-  // const filter = useSelector(getFilters)
 
   const handleInputChange = (event) => {
     const newFilterValue = event.currentTarget.value;

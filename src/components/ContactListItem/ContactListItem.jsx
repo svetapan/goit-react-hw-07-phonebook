@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import css from './ContactListItem.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact, updateContact, fetchContacts } from 'store/fetchContacts';
+import {
+  deleteContact,
+  updateContact,
+  fetchContacts,
+} from 'store/fetchContacts';
 
 const ContactListItem = ({ contact }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -26,13 +30,12 @@ const ContactListItem = ({ contact }) => {
   };
 
   const handleSave = () => {
-    // const updatedContact = { ...contact, name, number };
     dispatch(updateContact({ contactId: contact.id, name, number }))
       .then(() => {
         setIsEdit(false);
         dispatch(fetchContacts());
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -49,12 +52,12 @@ const ContactListItem = ({ contact }) => {
           <input
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
           <input
             type="text"
             value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            onChange={e => setNumber(e.target.value)}
           />
           <button className={css.btn} onClick={handleSave}>
             Save
@@ -66,12 +69,14 @@ const ContactListItem = ({ contact }) => {
       ) : (
         <>
           {contact.name}: {contact.number}
-          <button className={css.btn} onClick={handleEdit}>
-            Edit
-          </button>
-          <button className={css.btn} onClick={handleDelete}>
-            Delete
-          </button>
+          <div className={css.thumbBtn}>
+            <button className={css.btn} onClick={handleEdit}>
+              Edit
+            </button>
+            <button className={css.btn} onClick={handleDelete}>
+              Delete
+            </button>
+          </div>
         </>
       )}
     </li>

@@ -6,7 +6,6 @@ import { getFilter } from 'store/selectors';
 
 const ContactsList = () => {
   const contacts = useSelector(state => state.contacts.items);
-  // const filter = useSelector(state => state.filter);
   const filter = useSelector(getFilter);
 
   const getVisibleContacts = () => {
@@ -21,10 +20,7 @@ const ContactsList = () => {
   return (
     <ul>
       {visibleContacts.map(contact => (
-        <ContactListItem 
-          key={contact.id}
-          contact={contact}
-        />
+        <ContactListItem key={contact.id} contact={contact} />
       ))}
     </ul>
   );

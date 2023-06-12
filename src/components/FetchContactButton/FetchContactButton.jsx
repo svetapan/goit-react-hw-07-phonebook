@@ -9,7 +9,6 @@ const FetchContactButton = () => {
     const handleClick = evt => {
       evt.preventDefault();
       dispatch(fetchContacts());
-      // console.log(contacts)
   };
 
   return (
